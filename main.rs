@@ -1,3 +1,34 @@
+
+use std::fmt;
+
+#[derive(Debug)]
+struct Structure(i32);
+
+impl fmt::Display for Structure {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "Structure({}: i32)",self.0)
+    }
+}
+
+#[derive(Debug)]
+struct List(Vec<i32>);
+
+impl fmt::Display for List  {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f, "[")?;
+
+        for (index, item) in self.0.iter().enumerate() {
+            if index != 0 {
+                write!(f, ", ")?;
+            }
+            write!(f, "{}: {}", index, item)?;
+        }
+
+        write!(f, "]")
+    }
+}
+
+
 /// This main function prints `Hello world!`
 fn main() {
     let (a, b): (i128, i128) = (128222, 16);
@@ -22,12 +53,12 @@ fn main() {
     // pad by len(n) - 5 Xs to the left / right-justify
     println!("{n:X>10}", n=a);
 
-    #[derive(Debug)] 
-    struct Structure(i32);
-
     println!("This struct `{:?}`,  will print... if you annotate it with the Debug trait", Structure(3));
     println!("This struct `{:#?}`,  will pretty print... if you annotate it with the Debug trait", Structure(3));
+    println!("This struct `{}`,  will use fmt::Display... if you implement fmt::Display for it", Structure(3));
 
+    println!("List: {:?}", List(vec![0, 1,2, 3]));
+    println!("List: {}", List(vec![0, 1,2, 3]));
 
     // capture variables from scope
     let width: usize = 17;
