@@ -30,3 +30,7 @@ Not a furry though.
     let tuple = (1, "hello", 4.5, true);
     let (a, b, c, d) = tuple;
 ```
+- Declaring arrays:
+  - `let ys: [i32; 500] = [0; 500];`
+  - `let xs: [i32; 5] = [1, 2, 3, 4, 5];`
+- Slices: of type `&[T]`
