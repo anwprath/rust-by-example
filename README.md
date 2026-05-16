@@ -25,3 +25,8 @@ Not a furry though.
   - Scalars: i32,i64,f64,bool...
   - `[i32;5]` -> array of size 5
   - Tuple: (i32,bool,3)
+- Tuples
+```rust
+    let tuple = (1, "hello", 4.5, true);
+    let (a, b, c, d) = tuple;
+```
