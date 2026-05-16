@@ -6,7 +6,7 @@ Not a furry though.
 
 # Short Notes
 
-### Printing stuff
+##  Printing stuff
 
 - Use `#[derive(Debug)]` trait to make a struct printable
   - `{:?}` for normal (ugly?) print
@@ -16,9 +16,9 @@ Not a furry though.
   ```rust
    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result
    ```
+---
 
-
-### Primitives
+##  Primitives
 - `let` -> cannot be mutated
 - `let mut` -> for mutable variables
 - Basic types:
@@ -34,3 +34,12 @@ Not a furry though.
   - `let ys: [i32; 500] = [0; 500];`
   - `let xs: [i32; 5] = [1, 2, 3, 4, 5];`
 - Slices: of type `&[T]`
+---
+
+## Custom types
+
+- Structs: Just like Go, with actual pattern matching
+  - `struct Unit;` -> Fieldless struct, all are equivalent
+
+- Tuple struct: `struct Pair(i32, f32);` Equivalent to named tuples
+
