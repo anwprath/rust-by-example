@@ -16,3 +16,12 @@ Not a furry though.
   ```rust
    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result
    ```
+
+
+### Primitives
+- `let` -> cannot be mutated
+- `let mut` -> for mutable variables
+- Basic types:
+  - Scalars: i32,i64,f64,bool...
+  - `[i32;5]` -> array of size 5
+  - Tuple: (i32,bool,3)
