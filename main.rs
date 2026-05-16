@@ -73,15 +73,29 @@ fn _print_stuff() {
 
 /// This main function prints `Hello world!`
 fn main() {
-    let logical = true;
-    let logical_annotated: bool = false;
+    println!("1 + 2 = {}", 1u32 + 2);
 
-    let default_float = 3.0; //f64
-    let float_annotated: f32 = 1.0;
+    // Integer subtraction
+    let a = 10;
+    let b = 20;
+    println!("1 - 2 = {}", 1u32 +(a+b));
+    // TODO ^ Try changing `1i32` to `1u32` to see why the type is important
 
-    let mut big_int: i128 = 1000000000000000; // unannotated assigns i32
-    // let small_int = 10000000000000; // compiler error
+    // Scientific notation
+    println!("1e4 is {}, -2.5e-3 is {}", 1e4, -2.5e-3);
 
-    let mut arr: [i32; 5] = [1,2,3,4,5]; // basic array type
-    let tuple: (i64,bool, i64) = (1,true,3);
+    // Short-circuiting boolean logic
+    println!("true AND false is {}", true && false);
+    println!("true OR false is {}", true || false);
+    println!("NOT true is {}", !true);
+
+    // Bitwise operations
+    println!("0011 AND 0101 is {:04b}", 0b0011u32 & 0b0101);
+    println!("0011 OR 0101 is {:04b}", 0b0011u32 | 0b0101);
+    println!("0011 XOR 0101 is {:04b}", 0b0011u32 ^ 0b0101);
+    println!("1 << 5 is {}", 1u32 << 5);
+    println!("0x80 >> 2 is 0x{:x}", 0x80u32 >> 2);
+
+    // Use underscores to improve readability!
+    println!("One million is written as {}", 1_000_000u32);
 }
