@@ -1,33 +1,35 @@
 use std::{fmt, string};
 
-// What has Go done to me
-// I can't tell if I hate or love these enums
-enum Event {
-    PageLoad,
-    PageUnload,
-
-    Click(char),
-    Scroll(i128),
-
-    Position { x: i128, y: i128 },
-}
-
-fn inspect(e: Event) {
-    match e {
-        Event::PageLoad => println!("PageLoad"),
-        Event::PageUnload => println!("PageUnLoad"),
-        Event::Click(c) => println!("Clicked {}", c),
-        Event::Scroll(f) => println!("Scrolled {} pixels", f),
-        Event::Position { x, y } => println!("At position: ({}, {})", x, y),
-    }
-}
-
-type String = Event; // Hello type aliases
-
 fn main() {
-    let load = Event::PageLoad;
-    let position = String::Position { x: 2, y: (3) };
+    let mut binding: u32;
+    let mut x = 5;
+    println!("x: {}", x);
+    {
+        x = 2;
+        binding = x * x;
+    }
+    println!("x: {}", x);
+    println!("binding: {}", binding);
 
-    inspect(load);
-    inspect(position);
+    // this is so dumb
+    let binding = 128i128;
+    println!("shadowed binding: {}", binding);
+
+    let mut _mutable_integer = 7i32;
+    println!("_mutable_integer: {}", _mutable_integer);
+
+    {
+        // Shadowing by immutable `_mutable_integer`
+        let _mutable_integer = _mutable_integer + 5;
+        println!("_mutable_integer: {}", _mutable_integer);
+
+        // Error! `_mutable_integer` is frozen in this scope
+        // _mutable_integer = 50; // not allowed obviously
+
+        // `_mutable_integer` goes out of scope
+    }
+    println!("_mutable_integer: {}", _mutable_integer);
+
+    // Ok! `_mutable_integer` is not frozen in this scope
+    _mutable_integer = 3;
 }

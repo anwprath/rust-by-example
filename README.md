@@ -43,3 +43,12 @@ Not a furry though.
 
 - Tuple struct: `struct Pair(i32, f32);` Equivalent to named tuples
 
+- Enums: Very weird but fun here
+
+
+## Variable Bindings
+
+- `let`, `let mut`
+- Blocks can shadow variables
+- variables can be redeclared in the same block
+
