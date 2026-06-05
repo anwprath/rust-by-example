@@ -50,5 +50,25 @@ Not a furry though.
 
 - `let`, `let mut`
 - Blocks can shadow variables
-- variables can be redeclared in the same block
+- variables can be redeclared in the same block - dumb af idk why
 
+## Types
+
+### Casting
+- No implicit conversions
+- Explicit conversion: `<variable> as <intended type>;`
+- Type inference:
+  ```rust
+  // Create an empty vector (a growable array).
+    let mut vec = Vec::new();
+    // At this point the compiler doesn't know the exact type of `vec`, it
+    // just knows that it's a vector of something (`Vec<_>`).
+
+    // Insert `elem` in the vector.
+    vec.push(elem);
+    // Aha! Now the compiler knows that `vec` is a vector of `u8`s (`Vec<u8>`)
+  ```
+### Type alias:
+  - Types must have UpperCamelCase names, or the compiler will raise a warning.
+    - `type NanoSecond = u64;`
+    - `let nanoseconds: NanoSecond = 5 as u64;`

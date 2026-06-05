@@ -1,35 +1,40 @@
 use std::{fmt, string};
 
 fn main() {
-    let mut binding: u32;
-    let mut x = 5;
-    println!("x: {}", x);
-    {
-        x = 2;
-        binding = x * x;
-    }
-    println!("x: {}", x);
-    println!("binding: {}", binding);
+    let mut decimal = 10064.43_2f64;
 
-    // this is so dumb
-    let binding = 128i128;
-    println!("shadowed binding: {}", binding);
+    // only explicit casting allowed
+    let int = decimal as u8;
+    let cha = int as char;
 
-    let mut _mutable_integer = 7i32;
-    println!("_mutable_integer: {}", _mutable_integer);
+    print!(
+        "Casting decimal -> {} to u8 -> {} to char -> {}",
+        decimal, int, cha
+    );
 
-    {
-        // Shadowing by immutable `_mutable_integer`
-        let _mutable_integer = _mutable_integer + 5;
-        println!("_mutable_integer: {}", _mutable_integer);
+    // 1000 already fits in a u16
+    println!("1000 as a u16 is: {}", 1000 as u16);
 
-        // Error! `_mutable_integer` is frozen in this scope
-        // _mutable_integer = 50; // not allowed obviously
+    // 1000 - 256 - 256 - 256 = 232
+    // Under the hood, the first 8 least significant bits (LSB) are kept,
+    // while the rest towards the most significant bit (MSB) get truncated.
+    println!("1000 as a u8 is : {}", 1000u32 as u8);
+    // -1 + 256 = 255
+    println!("  -1 as a u8 is : {}", (-1i8) as u8);
+    println!("   nan as u8 is : {}", f32::NAN as u8);
 
-        // `_mutable_integer` goes out of scope
-    }
-    println!("_mutable_integer: {}", _mutable_integer);
+    let x = 1u8;
+    let y = 2u32;
+    let z = 3f32;
 
-    // Ok! `_mutable_integer` is not frozen in this scope
-    _mutable_integer = 3;
+    // Unsuffixed literals, their types depend on how they are used
+    let i = 1;
+    let f = 1.0;
+
+    // `size_of_val` returns the size of a variable in bytes
+    println!("size of `x` in bytes: {}", std::mem::size_of_val(&x));
+    println!("size of `y` in bytes: {}", std::mem::size_of_val(&y));
+    println!("size of `z` in bytes: {}", std::mem::size_of_val(&z));
+    println!("size of `i` in bytes: {}", std::mem::size_of_val(&i));
+    println!("size of `f` in bytes: {}", std::mem::size_of_val(&f));
 }
